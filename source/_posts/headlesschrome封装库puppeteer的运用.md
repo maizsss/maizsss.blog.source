@@ -42,8 +42,21 @@ node example.js
 - 一般来说，我们会在windows或者mac系统下使用chrome。而linux，对于像chrome这样的GUI应用程序来说并不合适在其之上运行。然而还是有方式。
 - 当npm安装puppeteer时，会默认安装了chromium。但安装了chromium并不意味着马上就可以在linux上运行，因为还缺少一些依赖。
 - 以centos7为例，需要执行以下命令安装一系列依赖。
+```
+// 依赖库
+yum install pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 -y
+```
 - 安装这些依赖成功后，就可以让puppeteer以headless模式运行了。
+```
+// 字体
+yum install ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc -y
+```
 - 除此之外，当你对一些页面进行截图时会发现，有些汉字显示不完整，这是因为缺少了中文字体库和一些字库依赖。那就安装一下。
+```
+// 中文字体适配
+yum groupinstall "Chinese Support"
+yum groupinstall "Font"
+```
 - 至此，puppeteer就能运行在linux下了。
 ## 使用场景
 - 在官网上，已经列出了几条puppeteer的主要使用方式。
